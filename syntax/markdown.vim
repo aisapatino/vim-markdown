@@ -1,4 +1,4 @@
-" Customized vim syntax file
+" Customized vim syntax file. Original info:
 " Language:     Markdown
 " Maintainer:   Tim Pope <vimNOSPAM@tpope.org>
 " Filenames:    *.markdown
@@ -61,12 +61,12 @@ syn match markdownH2 "^.\+\n-\+$" contained contains=@markdownInline,markdownHea
 
 syn match markdownHeadingRule "^[=-]\+$" contained
 
-syn region markdownH1 matchgroup=markdownHeadingDelimiter start="##\@!"      end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
-syn region markdownH2 matchgroup=markdownHeadingDelimiter start="###\@!"     end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
-syn region markdownH3 matchgroup=markdownHeadingDelimiter start="####\@!"    end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
-syn region markdownH4 matchgroup=markdownHeadingDelimiter start="#####\@!"   end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
-syn region markdownH5 matchgroup=markdownHeadingDelimiter start="######\@!"  end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
-syn region markdownH6 matchgroup=markdownHeadingDelimiter start="#######\@!" end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
+syn region markdownH1 matchgroup=markdownHeadingDelimiter start="#\s\?#\@!"      end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
+syn region markdownH2 matchgroup=markdownHeadingDelimiter start="##\s\?#\@!"     end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
+syn region markdownH3 matchgroup=markdownHeadingDelimiter start="###\s\?#\@!"    end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
+syn region markdownH4 matchgroup=markdownHeadingDelimiter start="####\s\?#\@!"   end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
+syn region markdownH5 matchgroup=markdownHeadingDelimiter start="#####\s\?#\@!"  end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
+syn region markdownH6 matchgroup=markdownHeadingDelimiter start="######\s\?#\@!" end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
 
 " Elements
 "----------
@@ -131,7 +131,7 @@ if main_syntax ==# 'markdown'
     if has_key(s:done_include, matchstr(s:type,'[^.]*'))
       continue
     endif
-    exe 'syn region markdownHighlight'.substitute(matchstr(s:type,'[^=]*$'),'\..*','','').' matchgroup=markdownCodeDelimiter start="^\s*```*\s*'.matchstr(s:type,'[^=]*').'\>.*$" end="^\s*```*\ze\s*$" keepend contains=@markdownHighlight'.substitute(matchstr(s:type,'[^=]*$'),'\.','','g')
+    exe 'syn region markdownHighlight'.substitute(matchstr(s:type,'[^=]*$'),'\..*','','').' matchgroup=markdownCodeDelimiter start="^\s*```*\s*'.matchstr(s:type,'[^=]*').'\>.*$" end="^\s*```*\ze\s*$" keepend concealends contains=@markdownHighlight'.substitute(matchstr(s:type,'[^=]*$'),'\.','','g')
     let s:done_include[matchstr(s:type,'[^.]*')] = 1
   endfor
   unlet! s:type
@@ -147,7 +147,7 @@ syn match markdownError "\w\@<=_\w\@="
 " Highlight
 "-----------
 
-hi def link markdownH1                    BoldUnderlined
+hi def link markdownH1                    Title
 hi def link markdownH2                    BoldUnderlined
 hi def link markdownH3                    htmlH3
 hi def link markdownH4                    htmlH4
@@ -172,6 +172,7 @@ hi def link markdownUrlTitle              String
 hi def link markdownIdDelimiter           markdownLinkDelimiter
 hi def link markdownUrlDelimiter          htmlTag
 hi def link markdownUrlTitleDelimiter     Delimiter
+hi def link markdownPlainUrl              Special
 
 hi def link markdownItalic                htmlItalic
 hi def link markdownItalicDelimiter       markdownItalic
@@ -180,6 +181,7 @@ hi def link markdownBoldDelimiter         markdownBold
 hi def link markdownBoldItalic            htmlBoldItalic
 hi def link markdownBoldItalicDelimiter   markdownBoldItalic
 hi def link markdownCodeDelimiter         Delimiter
+hi def link markdownCode                  Code
 
 hi def link markdownEscape                Special
 hi def link markdownError                 Error
