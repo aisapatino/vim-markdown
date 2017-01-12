@@ -104,8 +104,8 @@ syn region markdownAutomaticLink matchgroup=markdownUrlDelimiter start="<\%(\w\+
 syn match markdownPlainUrl "https\?:\/\/\S\+\ze\(\s\|$\)"
 syn match markdownUrlIntro "https\?:\/\/" conceal contained containedin=markdownUrl,markdownPlainUrl
 
-" Style
-"-------
+" Bold, italic
+"--------------------------
 
 let s:concealends = has('conceal') ? ' concealends' : ''
 exe 'syn region markdownItalic matchgroup=markdownItalicDelimiter start="\S\@<=\*\|\*\S\@=" end="\S\@<=\*\|\*\S\@=" keepend contains=markdownLineStart' . s:concealends
@@ -156,7 +156,7 @@ hi def link markdownH6                    htmlH6
 hi def link markdownHeadingRule           markdownRule
 hi def link markdownHeadingDelimiter      Delimiter
 hi def link markdownOrderedListMarker     markdownListMarker
-hi def link markdownListMarker            htmlTagName
+hi def link markdownListMarker            Comment
 hi def link markdownBlockquote            Comment
 hi def link markdownRule                  PreProc
 
@@ -164,6 +164,8 @@ hi def link markdownFootnote              Typedef
 hi def link markdownFootnoteDefinition    Typedef
 
 hi def link markdownLinkText              htmlLink
+hi def link markdownLinkDelimiter         LineNr
+hi def link markdownLinkTextDelimiter     markdownLinkDelimiter
 hi def link markdownIdDeclaration         Typedef
 hi def link markdownId                    Type
 hi def link markdownAutomaticLink         markdownUrl
