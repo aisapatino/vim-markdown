@@ -122,6 +122,11 @@ syn region markdownCode matchgroup=markdownCodeDelimiter start="`" end="`" keepe
 syn region markdownCode matchgroup=markdownCodeDelimiter start="`` \=" end=" \=``" keepend concealends contains=markdownLineStart
 syn region markdownCode matchgroup=markdownCodeDelimiter start="^\s*```*.*$" end="^\s*```*\ze\s*$" keepend concealends
 
+" Misc
+"------
+
+syn keyword markdownTodo TODO
+
 " Fenced languages - match
 "--------------------------
 
@@ -187,6 +192,7 @@ hi def link markdownCode                  Code
 
 hi def link markdownEscape                Special
 hi def link markdownError                 Error
+hi def link markdownTodo                  markdownError
 
 let b:current_syntax = "markdown"
 if main_syntax ==# 'markdown'
