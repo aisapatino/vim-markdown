@@ -61,12 +61,12 @@ syn match markdownH2 "^.\+\n-\+$" contained contains=@markdownInline,markdownHea
 
 syn match markdownHeadingRule "^[=-]\+$" contained
 
-syn region markdownH1 matchgroup=markdownHeadingDelimiter start="#\s\?#\@!"      end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
-syn region markdownH2 matchgroup=markdownHeadingDelimiter start="##\s\?#\@!"     end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
-syn region markdownH3 matchgroup=markdownHeadingDelimiter start="###\s\?#\@!"    end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
-syn region markdownH4 matchgroup=markdownHeadingDelimiter start="####\s\?#\@!"   end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
-syn region markdownH5 matchgroup=markdownHeadingDelimiter start="#####\s\?#\@!"  end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
-syn region markdownH6 matchgroup=markdownHeadingDelimiter start="######\s\?#\@!" end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained concealends
+syn region markdownH1 matchgroup=markdownHeadingDelimiter start="#\s\?#\@!"      end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained
+syn region markdownH2 matchgroup=markdownHeadingDelimiter start="##\s\?#\@!"     end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained
+syn region markdownH3 matchgroup=markdownHeadingDelimiter start="###\s\?#\@!"    end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained
+syn region markdownH4 matchgroup=markdownHeadingDelimiter start="####\s\?#\@!"   end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained
+syn region markdownH5 matchgroup=markdownHeadingDelimiter start="#####\s\?#\@!"  end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained
+syn region markdownH6 matchgroup=markdownHeadingDelimiter start="######\s\?#\@!" end="#*\s*$" keepend oneline contains=@markdownInline,markdownAutomaticLink contained
 
 " Elements
 "----------
